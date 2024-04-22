@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIR Registration Form</title>
+    <style>
+        body {
+            background-color: rgb(183, 202, 244);
+        }
+        #page{
+            margin-top: 2vh;
+            width: 100vw;
+            height: 2vh;
+            justify-content: center;
+            display: flex;
+        }
+        #container2{
+            display: flex;
+            gap: 2vw;
+            margin-top: 2vh;
+        }
+        .dashboard-button {
+    font-size: 3vh; 
+    padding: 10px 20px; 
+    border: none; 
+    background-color: #4CAF50; 
+    color: white;
+    cursor: pointer; 
+    border-radius: 5px; 
+    margin-right: 10px;
+    align-self: center;
+    display: block; 
+    margin: 0 auto; 
+}
+
+.dashboard-button:hover {
+    background-color: #0f3110; 
+}
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="file"] {
+            border: none;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            padding: 10px 30px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div id="container2">
+            <button class="dashboard-button" id="home">Home</button>
+        <button class="dashboard-button" id="dashboard">Dashboard</button>
+        <button class="dashboard-button" id="live_stream">Live stream</button>
+    </div>
+    </div>
+    <div class="container">
+        <h1>FIR Registration Form</h1>
+        <form>
+            <fieldset>
+                <legend>Complainant Details</legend>
+                <div class="form-group">
+                    <label for="complainantName">Name</label>
+                    <input type="text" id="complainantName" name="complainantName" required>
+                </div>
+                <div class="form-group">
+                    <label for="complainantAddress">Address</label>
+                    <textarea id="complainantAddress" name="complainantAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="complainantAge">Age</label>
+                    <input type="number" id="complainantAge" name="complainantAge">
+                </div>
+                <div class="form-group">
+                    <label for="complainantOccupation">Occupation</label>
+                    <input type="text" id="complainantOccupation" name="complainantOccupation">
+                </div>
+                <div class="form-group">
+                    <label for="complainantContact">Contact Information</label>
+                    <input type="text" id="complainantContact" name="complainantContact" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Incident Details</legend>
+                <div class="form-group">
+                    <label for="incidentDate">Date</label>
+                    <input type="date" id="incidentDate" name="incidentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="incidentTime">Time</label>
+                    <input type="time" id="incidentTime" name="incidentTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="incidentLocation">Location</label>
+                    <input type="text" id="incidentLocation" name="incidentLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="incidentDescription">Description</label>
+                    <textarea id="incidentDescription" name="incidentDescription" required></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Accused Details (if known)</legend>
+                <div class="form-group">
+                    <label for="accusedName">Name</label>
+                    <input type="text" id="accusedName" name="accusedName">
+                </div>
+                <div class="form-group">
+                    <label for="accusedAddress">Address</label>
+                    <textarea id="accusedAddress" name="accusedAddress"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Witness Information</legend>
+                <div class="form-group">
+                    <label for="witnessNames">Names</label>
+                    <input type="text" id="witnessNames" name="witnessNames">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>File Uploads</legend>
+                <div class="form-group">
+                    <label for="fileUpload">Upload Documents, Images, or Audio Files</label>
+                    <input type="file" id="fileUpload" name="fileUpload" multiple>
+                    <small>Use Ctrl or Shift to select multiple files.</small>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="submit-btn">Submit FIR</button>
+        </form>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById("live_stream").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'webcam.html'; 
+    });
+    document.getElementById("dashboard").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'tabswitch.html';
+    });
+    document.getElementById("home").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'index.html';
+    });
+        document.getElementById('firForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const pdf = new jsPDF();
+
+            // Generate PDF content from form data
+            pdf.text(20, 20, 'Complainant Details');
+            pdf.text(20, 30, `Name: ${formData.get('complainantName')}`);
+            pdf.text(20, 40, `Address: ${formData.get('complainantAddress')}`);
+            // Add other form fields to the PDF
+
+            // Save the PDF
+            pdf.save('fir_form.pdf');
+        });
+        document.getElementById('submit').addEventListener('click', function() {
+  alert('FIR submitted sucessfully');
+  //alert("Device started Streaming")
+});
+    </script>
+</html>

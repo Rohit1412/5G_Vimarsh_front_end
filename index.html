@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="page1">
+        <img id="image" src="image.png" alt="image">
+   </div>
+   <div id="page2">
+        <h1>Team Name</h1>
+            <div id="buttoncontainer">
+                <button class="dashboard-button" id="dashboard">Dashboard</button>
+                <button class="dashboard-button" id="live_stream">Live stream</button>
+                <button class="dashboard-button" id="registration">Register FIR</button>
+            </div>
+    </div>
+   <div id="page3">
+       <h1>Team Members and Details</h1>
+
+       <div class="table-container">
+        <table id="input-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>ID</th>
+              <th>Device ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" placeholder="Enter name" /></td>
+              <td><input type="text" placeholder="Enter ID" /></td>
+              <td><input type="text" placeholder="Enter device ID" /></td>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Enter name" /></td>
+              <td><input type="text" placeholder="Enter ID" /></td>
+              <td><input type="text" placeholder="Enter device ID" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Enter name" /></td>
+                <td><input type="text" placeholder="Enter ID" /></td>
+                <td><input type="text" placeholder="Enter device ID" /></td>
+              </tr>
+              
+            
+          </tbody>
+        </table>
+        <button class="dashboard-button3" onclick="storeData()">Store Data</button>
+   </div>
+    </div>
+    <div id="page4">
+        <h1>Contact</h1>
+        <p>Email:- Rohitrathod1412003@gmail.com</p>
+
+        <button class="dashboard-button2">Github</button>
+        <button class="dashboard-button2">Instagram</button>
+        <button class="dashboard-button2">LinkedIn</button>
+
+
+
+    </div>
+<script>
+  document.getElementById("registration").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'firregistraton.html'; 
+    });
+    document.getElementById("live_stream").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'webcam.html'; 
+    });
+    document.getElementById("dashboard").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'tabswitch.html'; 
+    });
+
+
+function storeData() {
+  var dataList = [];
+
+  var table = document.getElementById("input-table");
+  if (!table) {
+    console.error("Table element not found");
+    return;
+  }
+
+  var rows = table.getElementsByTagName("tr");
+  for (var i = 1; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var rowData = {
+      name: cells[0].querySelector("input").value,
+      id: cells[1].querySelector("input").value,
+      deviceId: cells[2].querySelector("input").value
+    };
+    dataList.push(rowData);
+  }
+
+  console.log("Data stored in JavaScript:", dataList);
+}
+
+</script>
+</body>
+</html>
+

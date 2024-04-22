@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Control</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+}
+#page{
+            margin-top: 2vh;
+            width: 100vw;
+            height: 2vh;
+            justify-content: center;
+            display: flex;
+        }
+        #container2{
+            display: flex;
+            gap: 2vw;
+            margin-top: 2vh;
+        }
+        .dashboard-button {
+    font-size: 3vh; 
+    padding: 10px 20px; 
+    border: none; 
+    background-color: #4CAF50; 
+    color: white;
+    cursor: pointer; 
+    border-radius: 5px; 
+    margin-right: 10px;
+    align-self: center;
+    display: block; 
+    margin: 0 auto; 
+}
+
+.dashboard-button:hover {
+    background-color: #0f3110; 
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+#video {
+  width: 50%;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="container2">
+        <button class="dashboard-button" id="home">Home</button>
+    <button class="dashboard-button" id="dashboard">Dashboard</button>
+    <button class="dashboard-button" id="live_stream">FIR Registration</button>
+</div>
+</div>
+  <div class="container">
+    <h1>Camera Control</h1>
+    <video id="video" autoplay></video>
+    <button id="startButton">Start Camera</button>
+    <button id="stopButton">Stop Camera</button>
+  </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const video = document.getElementById('video');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+  
+    let stream;
+  
+    startButton.addEventListener('click', async function() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        console.error('Error accessing the camera:', err);
+      }
+    });
+  
+    stopButton.addEventListener('click', function() {
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        video.srcObject = null;
+      }
+    });
+  });
+
+  document.getElementById("live_stream").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'firregistraton.html'; 
+    });
+    document.getElementById("dashboard").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'tabswitch.html';
+    });
+    document.getElementById("home").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'index.html';
+    });
+</script>
+</body>
+</html>

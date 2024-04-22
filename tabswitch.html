@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome-like Tabs</title>
+    <link rel="stylesheet" href="styletab.css">
+</head>
+<body>
+    <div id="page">
+        <div id="container2">
+            <button class="dashboard-button" id="home">Home</button>
+        <button class="dashboard-button" id="dashboard">Dashboard</button>
+        <button class="dashboard-button" id="live_stream">Live stream</button>
+    </div>
+    </div>
+    <div class="box">
+    <div class="tabs-container">
+        <div class="tab active" onclick="switchTab(0)">Tab 1</div>
+        <div class="tab" onclick="switchTab(1)">Tab 2</div>
+        <div class="tab" onclick="switchTab(2)">Tab 3</div>
+        <div class="tab" onclick="switchTab(3)">Tab 4</div>
+        <div class="tab" onclick="switchTab(4)">Tab 5</div>
+        <div class="tab" onclick="switchTab(5)">Tab 6</div>
+        <div class="tab" onclick="switchTab(6)">Tab 7</div>
+        <div class="tab" onclick="switchTab(7)">Tab 8</div>
+        <div class="tab" onclick="switchTab(8)">Tab 9</div>
+        <div class="tab" onclick="switchTab(9)">Tab 10</div>
+    </div>
+    <div class="tab-content">
+        <div class="content active">
+            <div id="block1">
+                <div id="block2">
+                    <img src="" alt="image">
+                </div>
+                <div id="block3">
+                    <div id="nameid">
+                        <div id="name">
+                            <p>Name:- officer 1</p>
+                            <p>ID:- 00001</p>
+                            <p>Heartbeat : 90 BPM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="vedioblock">
+                this is vedio block
+            </div>
+
+        </div>
+        <div class="content">officer Tab 2</div>
+        <div class="content">Content for Tab 3</div>
+        <div class="content">Content for Tab 4</div>
+        <div class="content">Content for Tab 5</div>
+        <div class="content">Content for Tab 6</div>
+        <div class="content">Content for Tab 7</div>
+        <div class="content">Content for Tab 8</div>
+        <div class="content">Content for Tab 9</div>
+        <div class="content">Content for Tab 10</div>
+    </div>
+</div>
+    <script>
+    function switchTab(tabIndex) {
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    tabs[tabIndex].classList.add('active');
+    
+    contents.forEach(content => content.classList.remove('active'));
+    contents[tabIndex].classList.add('active');
+}
+
+document.getElementById("live_stream").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'webcam.html'; 
+    });
+    document.getElementById("dashboard").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'tabswitch.html';
+    });
+    document.getElementById("home").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = 'index.html';
+    });
+
+</script>
+</body>
+</html>
